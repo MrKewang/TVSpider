@@ -39,13 +39,13 @@ class TVInfoManager(request.RequestDelegate):
         ret = re.search(patten, data)
         info.set__score(float(ret.group(1)))
 
-        patten = '"description": "(.*)",\\n  "@type": "TVSeries",'
+        patten = '<span property="v:summary" class="">\\n                                　　(.*)\\n                        </span>'
         ret = re.search(patten, data)
         info.set__sortInfo(str(ret.group(1)))
 
         print(info)
 
-path = "https://movie.douban.com/subject/27052168/"
+path = "https://movie.douban.com/subject/25754848/"
 mim = TVInfoManager()
 mim.download(path)
 
